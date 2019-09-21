@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var users = require('./routes/users');
 var generate_uid = require('./routes/generate_uid');
 var customers = require('./routes/customers');
+var heroes = require('./routes/heroes');
 
 var app = express();
 
@@ -22,6 +23,7 @@ app.use(function(req, res, next) {
 app.use('/api/v1/users', users);
 app.use('/api/v1/generate_uid', generate_uid);
 app.use('/api/v1/customer', customers);
+app.use('/api/v1/heroes', heroes);
 
 let reporter = function (type, ...rest)
 {
