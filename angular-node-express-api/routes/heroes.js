@@ -3,9 +3,16 @@ var router = express.Router();
 var HeroService = require("../services/hero.service.js");
 
 router.get('/', async (req, res) => {
+    let term = req.query.name;
     try
-    {
-        let heroes = await HeroService.getAllHeroes();
+    {   
+        let heroes;
+        if(term) {
+            heroes = await HeroService.searchHeroes(term);
+        } else {
+            heroes = await HeroService.getAllHeroes();
+        }
+        
         res.json(heroes);
     }
     catch(error) {

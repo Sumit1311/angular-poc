@@ -45,4 +45,10 @@ module.exports = class HeroService {
             return hero.id != heroId;
         });
     }
+
+    static searchHeroes(searchTerm) {
+        return heroes.filter((hero) => {
+            return (hero.name.search(new RegExp(`${searchTerm}`, "gi")) == -1 ? false : true);
+        })
+    }
 }
